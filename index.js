@@ -19,26 +19,36 @@ app.use('/showAll', function (req, res) {   // Retrieve all
 		}
 	});
 })
-
-app.post('/addCar', function (req, res) {    // Create a new car object
-	new Car({
-		cid: req.body.cid,
-		year: req.body.year,
-		make: req.body.make,
-		model: req.body.model,
-		miles: req.body.miles,
-		price: req.body.price,
-		dealer_id: req.body.dealer_id,
-	}).save(function (err) {       // same the new car
+app.get('/getOne', function (req, res) {     // Retrieve student using sid
+	sid = req.query.sid
+	Student.findOne({ sid: sid }, function (err, student) {
 		if (err) {
 			res.status(500).send(err);
 		}
 		else {
-			res.send("Car successfully added.");
+			res.send(student);
+		}
+	});
+})
+app.post('/addStudent', function (req, res) {
+	var newStudent = new Student({
+		sid: req.body.sid,
+		last_name: req.body.last_name,
+		first_name: req.body.first_name,
+		major: req.body.major,
+		midterm: 0,        // new student has no scores yet
+		final: 0
+	});
+
+	newStudent.save(function (err) {
+		if (err) {
+			res.status(500).send(err);
+		}
+		else {
+			res.send("Student successfully added.");
 		}
 	});
 });
-
 app.post('/updateCar', function (req, res) {   // Update miles and price
 	var update_cid = req.body.cid;    // get posted properties
 	Car.findOne({ cid: update_cid }, function (err, car) {
@@ -63,7 +73,7 @@ app.post('/updateCar', function (req, res) {   // Update miles and price
 });
 
 app.get('/deleteCar', function (req, res) {   //  Delete
-	var delete_cid = req.query.cid; 
+	var delete_cid = req.query.cid;
 	Car.findOneAndRemove({ cid: delete_cid }, function (err, car) {  // 
 		if (err) {
 			res.status(500).send(err);
