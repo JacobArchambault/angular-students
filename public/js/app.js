@@ -1,5 +1,5 @@
 
-var app = angular.module('carsApp', ['ngRoute']);
+var app = angular.module('studentApp', ['ngRoute']);
 
 app.config(function ($routeProvider) {
     $routeProvider

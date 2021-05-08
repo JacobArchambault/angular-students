@@ -87,25 +87,6 @@ app.get('/deleteCar', function (req, res) {   //  Delete
 	});
 });
 
-app.get('/addMany', function (req, res) {  // add mors data if you want. you can only add this data once 
-	Car.collection.insert([
-		{ cid: 12, year: 2010, make: "Honda", model: "Civic", miles: 89100, price: 10100, dealer_id: "MH228" },
-		{ cid: 13, year: 2005, make: "Ford", model: "Ranger", miles: 209950, price: 5670, dealer_id: "LS522" },
-		{ cid: 14, year: 2001, make: "Jeep", model: "Wrangler", miles: 198900, price: 5100, dealer_id: "KI234" },
-		{ cid: 15, year: 2008, make: "Ford", model: "Focus", miles: 290999, price: 5900, dealer_id: "MJ209" },
-		{ cid: 16, year: 2009, make: "Chevy", model: "Aveo", miles: 194800, price: 7700, dealer_id: "SG302" },
-		{ cid: 17, year: 2001, make: "Ford", model: "Ranger", miles: 289930, price: 4100, dealer_id: "MJ209" },
-		{ cid: 18, year: 2009, make: "Dodge", model: "Caravan", miles: 96010, price: 9008, dealer_id: "KI234" }
-	], function (err, docs) {
-		if (err) {
-			res.status(500).send(err);
-		}
-		else {
-			res.send("cars were added.");
-		}
-	});
-});
-
 app.listen(3000, function () {
 	console.log('Listening on port 3000, ctrl-c to quit');
 });
