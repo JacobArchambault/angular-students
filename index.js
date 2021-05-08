@@ -31,16 +31,14 @@ app.get('/getOne', function (req, res) {     // Retrieve student using sid
 	});
 })
 app.post('/addStudent', function (req, res) {
-	var newStudent = new Student({
+	new Student({
 		sid: req.body.sid,
 		last_name: req.body.last_name,
 		first_name: req.body.first_name,
 		major: req.body.major,
 		midterm: 0,        // new student has no scores yet
 		final: 0
-	});
-
-	newStudent.save(function (err) {
+	}).save(function (err) {
 		if (err) {
 			res.status(500).send(err);
 		}
