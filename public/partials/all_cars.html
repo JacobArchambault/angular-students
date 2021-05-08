@@ -1,8 +1,8 @@
-<h2>All Cars</h2>
+<h2>All Students</h2>
 <p><input type='text' ng-model='search_value'> Enter Search text</p>
 <table class="table table-bordered table-striped">
     <tr>
-        <th>cid</th>
+        <th>sid</th>
         <th>year</th>
         <th>make</th>
         <th>model</th>
@@ -10,13 +10,13 @@
         <th>price</th>
         <th>dealer_id</th>
     </tr>
-    <tr ng-repeat="car in cars | filter : search_value ">
-        <td>{{car.cid}}</td>
-        <td>{{car.year}}</td>
-        <td>{{car.make}}</td>
-        <td>{{car.model}}</td>
-        <td>{{car.miles}}</td>
-        <td>{{car.price | currency}}</td>
-        <td>{{car.dealer_id}}</td>
+    <tr ng-repeat="student in students | filter : search_value ">
+        <td>{{student.sid}}</td>
+        <td>{{student.year}}</td>
+        <td>{{student.make}}</td>
+        <td>{{student.model}}</td>
+        <td>{{student.miles}}</td>
+        <td>{{student.price | currency}}</td>
+        <td>{{student.dealer_id}}</td>
     </tr>
 </table>

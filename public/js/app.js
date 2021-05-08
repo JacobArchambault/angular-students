@@ -12,11 +12,11 @@ app.config(function ($routeProvider) {
             controller: 'allCtrl'
         })
         .when('/add_student', {
-            templateUrl: 'partials/add_student.html',    // add a car to db
+            templateUrl: 'partials/add_student.html',    // add a student to db
             controller: 'addCtrl'
         })
         .when('/edit_student', {
-            templateUrl: 'partials/edit_student.html',    // edit a car record
+            templateUrl: 'partials/edit_student.html',    // edit a student record
             controller: 'editCtrl'
         })
         .otherwise({
@@ -27,9 +27,9 @@ app.config(function ($routeProvider) {
 /*   a controller for each page  */
 app.controller('allCtrl', function ($scope, $http) {
 
-    $http.get("/showAll")          // get all the cars 
+    $http.get("/showAll")          // get all the students 
         .then(function (response) {
-            $scope.cars = response.data;
+            $scope.students = response.data;
         });
 });
 
@@ -59,50 +59,50 @@ app.controller('addCtrl', function($scope, $http) {
 });
 
 app.controller('editCtrl', function ($scope, $http) {  // edit miles or price of record
-    $scope.carIndex = 0;
+    $scope.studentIndex = 0;
 
     $http.get("/showAll")
         .then(function (response) {
-            $scope.cars = response.data;
-            $scope.car = $scope.cars[$scope.carIndex];
-            $scope.maxIndex = $scope.cars.length - 1;  // index of last car object
+            $scope.students = response.data;
+            $scope.student = $scope.students[$scope.studentIndex];
+            $scope.maxIndex = $scope.students.length - 1;  // index of last student object
         });
 
     $scope.nextRecord = function () {
-        $scope.carIndex += 1;        // go to next car object
-        if ($scope.carIndex > $scope.maxIndex)
-            $scope.carIndex = $scope.maxIndex;
+        $scope.studentIndex += 1;        // go to next student object
+        if ($scope.studentIndex > $scope.maxIndex)
+            $scope.studentIndex = $scope.maxIndex;
 
-        $scope.car = $scope.cars[$scope.carIndex];
+        $scope.student = $scope.students[$scope.studentIndex];
     };
 
     $scope.previousRecord = function () {
-        $scope.carIndex -= 1;        // go to previous car index
-        if ($scope.carIndex < 0)
-            $scope.carIndex = 0;
+        $scope.studentIndex -= 1;        // go to previous student index
+        if ($scope.studentIndex < 0)
+            $scope.studentIndex = 0;
 
-        $scope.car = $scope.cars[$scope.carIndex];
+        $scope.student = $scope.students[$scope.studentIndex];
     };
 
     $scope.updateRecord = function () {
-        var car = $scope.cars[$scope.carIndex]
-        $http.post("/updateCar", {
-            cid: car.cid,
-            miles: car.miles,
-            price: car.price
+        var student = $scope.students[$scope.studentIndex]
+        $http.post("/updateStudent", {
+            sid: student.sid,
+            miles: student.miles,
+            price: student.price
         })
             .then(function (response) {
-                $scope.car = $scope.cars[$scope.carIndex];
+                $scope.student = $scope.students[$scope.studentIndex];
             });
     }
 
     $scope.deleteRecord = function () {
-        $http.get("/deleteCar?cid=" + $scope.cars[$scope.carIndex].cid)
+        $http.get("/deleteStudent?sid=" + $scope.students[$scope.studentIndex].sid)
             .then(function (response) {
-                //$scope.car = response.data;
-                console.log($scope.car)
-                $scope.maxIndex = $scope.cars.length - 1;
-                $scope.car = $scope.cars[$scope.carIndex];
+                //$scope.student = response.data;
+                console.log($scope.student)
+                $scope.maxIndex = $scope.students.length - 1;
+                $scope.student = $scope.students[$scope.studentIndex];
             });
     };
 });

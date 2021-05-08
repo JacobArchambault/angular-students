@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/CIT301');  // db name = cars4sale
+mongoose.connect('mongodb://localhost:27017/CIT301');
 
 module.exports = mongoose.model('Student', new mongoose.Schema({
 	sid: { type: Number, required: true, min: 1000, max: 9999, unique: true },

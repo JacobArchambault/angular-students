@@ -5,17 +5,17 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json())               // <-- angularjs sends json data 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-var Car = require('./modules/Car.js');  // our Car model
+var Student = require('./modules/Student.js');  // our Student model
 app.use(express.static('public'))       // serve static files
 
 app.use('/showAll', function (req, res) {   // Retrieve all
 
-	Car.find(function (err, cars) {
+	Student.find(function (err, students) {
 		if (err) {
 			res.status(500).send(err);
 		}
 		else {
-			res.send(cars);
+			res.send(students);
 		}
 	});
 })
@@ -49,20 +49,20 @@ app.post('/addStudent', function (req, res) {
 		}
 	});
 });
-app.post('/updateCar', function (req, res) {   // Update miles and price
-	var update_cid = req.body.cid;    // get posted properties
-	Car.findOne({ cid: update_cid }, function (err, car) {
+app.post('/updateStudent', function (req, res) {   // Update miles and price
+	var update_sid = req.body.sid;    // get posted properties
+	Student.findOne({ sid: update_sid }, function (err, student) {
 		if (err) {
 			res.status(500).send(err);
 		}
-		else if (!car) {
-			res.send('No car with a cid of ' + update_cid);
+		else if (!student) {
+			res.send('No student with a sid of ' + update_sid);
 		}
 		else {
-			car.miles = req.body.miles;
-			car.price = req.body.price;
+			student.miles = req.body.miles;
+			student.price = req.body.price;
 
-			car.save(function (err) {
+			student.save(function (err) {
 				if (err) {
 					res.status(500).send(err);
 				}
@@ -72,17 +72,17 @@ app.post('/updateCar', function (req, res) {   // Update miles and price
 	});
 });
 
-app.get('/deleteCar', function (req, res) {   //  Delete
-	var delete_cid = req.query.cid;
-	Car.findOneAndRemove({ cid: delete_cid }, function (err, car) {  // 
+app.get('/deleteStudent', function (req, res) {   //  Delete
+	var delete_sid = req.query.sid;
+	Student.findOneAndRemove({ sid: delete_sid }, function (err, student) {  // 
 		if (err) {
 			res.status(500).send(err);
 		}
-		else if (!car) {
-			res.send('No car with a cid of ' + delete_cid);
+		else if (!student) {
+			res.send('No student with a sid of ' + delete_sid);
 		}
 		else {
-			res.send("Car cid: " + delete_cid + " deleted.");
+			res.send("Student sid: " + delete_sid + " deleted.");
 		}
 	});
 });
