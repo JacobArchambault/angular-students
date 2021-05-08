@@ -1,0 +1,22 @@
+<h2>All Cars</h2>
+<p><input type='text' ng-model='search_value'> Enter Search text</p>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>cid</th>
+        <th>year</th>
+        <th>make</th>
+        <th>model</th>
+        <th>miles</th>
+        <th>price</th>
+        <th>dealer_id</th>
+    </tr>
+    <tr ng-repeat="car in cars | filter : search_value ">
+        <td>{{car.cid}}</td>
+        <td>{{car.year}}</td>
+        <td>{{car.make}}</td>
+        <td>{{car.model}}</td>
+        <td>{{car.miles}}</td>
+        <td>{{car.price | currency}}</td>
+        <td>{{car.dealer_id}}</td>
+    </tr>
+</table>

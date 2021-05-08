@@ -1,0 +1,35 @@
+<h4>Edit Record {{carIndex + 1}} of {{maxIndex + 1}}</h4>
+
+<div class="form-group">
+     <label for="cid">CID:</label>
+     <input type="text" class="form-control" id="cid" ng-model="car.cid" readonly>
+</div>
+<div class="form-group">
+     <label for="year">Year:</label>
+     <input type="text" class="form-control" id="year" ng-model="car.year" readonly>
+</div>
+<div class="form-group">
+     <label for="make">Make:</label>
+     <input type="text" class="form-control" id="make" ng-model="car.make" readonly>
+</div>
+<div class="form-group">
+     <label for="model">Model:</label>
+     <input type="text" class="form-control" id="model" ng-model="car.model" readonly>
+</div>
+<div class="form-group">
+     <label for="miles">Miles:</label>
+     <input type="text" class="form-control" id="miles" ng-model="car.miles">
+</div>
+<div class="form-group">
+     <label for="price">Price:</label>
+     <input type="text" class="form-control" id="price" ng-model="car.price">
+</div>
+<div class="form-group">
+     <label for="dealer_id">Dealer ID:</label>
+     <input type="text" class="form-control" id="dealer_id" ng-model="car.dealer_id" readonly>
+</div>
+<button type="button" class="btn btn-primary" ng-click="previousRecord()">&lt; previous </button> &nbsp;
+<button type="button" class="btn btn-primary" ng-click="nextRecord()"> next &gt;</button> &nbsp;
+<button type="button" class="btn btn-primary" ng-click="updateRecord()">Update</button> &nbsp;
+<button type="button" class="btn btn-primary" ng-click="deleteRecord()">Delete</button>
+<br><br>
