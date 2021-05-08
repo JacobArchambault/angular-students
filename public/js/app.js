@@ -34,32 +34,29 @@ app.controller('allCtrl', function ($scope, $http) {
 });
 
 
-app.controller('addCtrl', function ($scope, $http) {
+app.controller('addCtrl', function($scope, $http) {
 
-    $scope.addRecord = function () {
-        $http.post("/addCar", {
-            cid: Math.floor(Math.random() * 1000) + 100,
-            year: $scope.year,
-            make: $scope.make,
-            model: $scope.model,
-            miles: $scope.miles,
-            price: $scope.price,
-            dealer_id: $scope.dealer_id
-        })                // post the object data
+    $scope.addStudent = function() {      // add a student
+        var info = {
+            sid : $scope.sid,       // set up data object
+            first_name : $scope.firstname,
+            last_name : $scope.lastname,
+            major : $scope.major
+        }
+
+        url = "/addStudent"
+
+        $http.post(url, info)         // post the object data
             .then(function (response) {
-                $scope.status = response.data;  //print status of request
+                 $scope.status = response.data;   //print status of request
 
-                // clear textboxes
-                $scope.year = "";
-                $scope.make = "";
-                $scope.model = "";
-                $scope.miles = "";
-                $scope.price = "";
-                $scope.dealer_id = "";
-            });
+           // clear textboxes
+           $scope.sid = "";
+           $scope.firstname = "";
+           $scope.lastname = "";
+        });
     };
 });
-
 
 app.controller('editCtrl', function ($scope, $http) {  // edit miles or price of record
     $scope.carIndex = 0;
