@@ -4,23 +4,23 @@ var app = angular.module('studentApp', ['ngRoute']);
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: 'partials/all_cars.html',    // route for the home page
+            templateUrl: 'partials/all_students.html',    // route for the home page
             controller: 'allCtrl'
         })
-        .when('/all_cars', {
-            templateUrl: 'partials/all_cars.html',
+        .when('/all_students', {
+            templateUrl: 'partials/all_students.html',
             controller: 'allCtrl'
         })
-        .when('/add_car', {
-            templateUrl: 'partials/add_car.html',    // add a car to db
+        .when('/add_student', {
+            templateUrl: 'partials/add_student.html',    // add a car to db
             controller: 'addCtrl'
         })
-        .when('/edit_cars', {
-            templateUrl: 'partials/edit_cars.html',    // edit a car record
+        .when('/edit_student', {
+            templateUrl: 'partials/edit_student.html',    // edit a car record
             controller: 'editCtrl'
         })
         .otherwise({
-            redirectTo: 'partials/all_cars.html'        // any other URL goes to home
+            redirectTo: 'partials/all_students.html'        // any other URL goes to home
         });
 });
 
