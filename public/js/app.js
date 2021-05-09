@@ -34,27 +34,23 @@ app.controller('allCtrl', function ($scope, $http) {
 });
 
 
-app.controller('addCtrl', function($scope, $http) {
+app.controller('addCtrl', function ($scope, $http) {
 
-    $scope.addStudent = function() {      // add a student
-        var info = {
-            sid : $scope.sid,       // set up data object
-            first_name : $scope.first_name,
-            last_name : $scope.last_name,
-            major : $scope.major
-        }
-
-        url = "/addStudent"
-
-        $http.post(url, info)         // post the object data
+    $scope.addStudent = function () {      // add a student
+        $http.post("/addStudent", {
+            sid: $scope.sid,       // set up data object
+            first_name: $scope.first_name,
+            last_name: $scope.last_name,
+            major: $scope.major
+        })         // post the object data
             .then(function (response) {
-                 $scope.status = response.data;   //print status of request
+                $scope.status = response.data;   //print status of request
 
-           // clear textboxes
-           $scope.sid = "";
-           $scope.first_name = "";
-           $scope.last_name = "";
-        });
+                // clear textboxes
+                $scope.sid = "";
+                $scope.first_name = "";
+                $scope.last_name = "";
+            });
     };
 });
 
