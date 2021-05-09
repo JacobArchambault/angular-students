@@ -57,13 +57,6 @@ app.controller('addCtrl', function ($scope, $http) {
 app.controller('editCtrl', function ($scope, $http) {  // edit miles or price of record
     $scope.studentIndex = 0;
 
-    $http.get("/showAll")
-        .then(function (response) {
-            $scope.students = response.data;
-            $scope.student = $scope.students[$scope.studentIndex];
-            $scope.maxIndex = $scope.students.length - 1;  // index of last student object
-        });
-
     $scope.updateStudent = function () {
         var student = $scope.students[$scope.studentIndex]
         $http.post("/updateStudent", {
