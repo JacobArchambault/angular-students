@@ -68,7 +68,7 @@ app.controller('editCtrl', function ($scope, $http) {  // edit miles or price of
             $scope.maxIndex = $scope.students.length - 1;  // index of last student object
         });
 
-    $scope.nextRecord = function () {
+    $scope.nextStudent = function () {
         $scope.studentIndex += 1;        // go to next student object
         if ($scope.studentIndex > $scope.maxIndex)
             $scope.studentIndex = $scope.maxIndex;
@@ -76,7 +76,7 @@ app.controller('editCtrl', function ($scope, $http) {  // edit miles or price of
         $scope.student = $scope.students[$scope.studentIndex];
     };
 
-    $scope.previousRecord = function () {
+    $scope.previousStudent = function () {
         $scope.studentIndex -= 1;        // go to previous student index
         if ($scope.studentIndex < 0)
             $scope.studentIndex = 0;
@@ -84,7 +84,7 @@ app.controller('editCtrl', function ($scope, $http) {  // edit miles or price of
         $scope.student = $scope.students[$scope.studentIndex];
     };
 
-    $scope.updateRecord = function () {
+    $scope.updateStudent = function () {
         var student = $scope.students[$scope.studentIndex]
         $http.post("/updateStudent", {
             sid: student.sid,
@@ -96,7 +96,7 @@ app.controller('editCtrl', function ($scope, $http) {  // edit miles or price of
             });
     }
 
-    $scope.deleteRecord = function () {
+    $scope.deleteStudent = function () {
         $http.get("/deleteStudent?sid=" + $scope.students[$scope.studentIndex].sid)
             .then(function (response) {
                 //$scope.student = response.data;
