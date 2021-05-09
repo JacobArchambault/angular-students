@@ -57,6 +57,9 @@ app.controller('addCtrl', function ($scope, $http) {
 app.controller('editCtrl', function ($scope, $http) {  // edit miles or price of record
     $scope.studentIndex = 0;
 
+    $scope.getOne = function(){
+        console.log("Check");
+    }
     $scope.updateStudent = function () {
         var student = $scope.students[$scope.studentIndex]
         $http.post("/updateStudent", {
