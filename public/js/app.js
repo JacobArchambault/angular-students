@@ -39,8 +39,8 @@ app.controller('addCtrl', function($scope, $http) {
     $scope.addStudent = function() {      // add a student
         var info = {
             sid : $scope.sid,       // set up data object
-            first_name : $scope.firstname,
-            last_name : $scope.lastname,
+            first_name : $scope.first_name,
+            last_name : $scope.last_name,
             major : $scope.major
         }
 
@@ -52,8 +52,8 @@ app.controller('addCtrl', function($scope, $http) {
 
            // clear textboxes
            $scope.sid = "";
-           $scope.firstname = "";
-           $scope.lastname = "";
+           $scope.first_name = "";
+           $scope.last_name = "";
         });
     };
 });
