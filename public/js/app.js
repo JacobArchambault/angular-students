@@ -64,22 +64,6 @@ app.controller('editCtrl', function ($scope, $http) {  // edit miles or price of
             $scope.maxIndex = $scope.students.length - 1;  // index of last student object
         });
 
-    $scope.nextStudent = function () {
-        $scope.studentIndex += 1;        // go to next student object
-        if ($scope.studentIndex > $scope.maxIndex)
-            $scope.studentIndex = $scope.maxIndex;
-
-        $scope.student = $scope.students[$scope.studentIndex];
-    };
-
-    $scope.previousStudent = function () {
-        $scope.studentIndex -= 1;        // go to previous student index
-        if ($scope.studentIndex < 0)
-            $scope.studentIndex = 0;
-
-        $scope.student = $scope.students[$scope.studentIndex];
-    };
-
     $scope.updateStudent = function () {
         var student = $scope.students[$scope.studentIndex]
         $http.post("/updateStudent", {
