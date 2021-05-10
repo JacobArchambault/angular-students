@@ -71,21 +71,6 @@ app.post('/updateStudent', function (req, res) {   // Update miles and price
 	});
 });
 
-app.get('/deleteStudent', function (req, res) {   //  Delete
-	var delete_sid = req.query.sid;
-	Student.findOneAndRemove({ sid: delete_sid }, function (err, student) {  // 
-		if (err) {
-			res.status(500).send(err);
-		}
-		else if (!student) {
-			res.send('No student with a sid of ' + delete_sid);
-		}
-		else {
-			res.send("Student sid: " + delete_sid + " deleted.");
-		}
-	});
-});
-
 app.listen(3000, function () {
 	console.log('Listening on port 3000, ctrl-c to quit');
 });
