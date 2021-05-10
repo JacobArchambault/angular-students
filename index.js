@@ -57,8 +57,9 @@ app.post('/updateStudent', function (req, res) {   // Update miles and price
 			res.send('No student with a sid of ' + update_sid);
 		}
 		else {
-			student.miles = req.body.miles;
-			student.price = req.body.price;
+			student.midterm = req.body.midterm;
+			student.final = req.body.final;
+			student.major = req.body.major;
 
 			student.save(function (err) {
 				if (err) {

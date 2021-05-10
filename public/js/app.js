@@ -59,14 +59,14 @@ app.controller('editCtrl', function ($scope, $http) {  // edit miles or price of
         $http.get("/getOne?sid=" + $scope.student.sid).then(function (response) { $scope.student = response.data })
     }
     $scope.updateStudent = function () {
-        var student = $scope.students[$scope.studentIndex]
         $http.post("/updateStudent", {
-            sid: student.sid,
-            miles: student.miles,
-            price: student.price
+            sid: $scope.student.sid,
+            final: $scope.student.final,
+            midterm: $scope.student.midterm,
+            major: $scope.student.major,
         })
             .then(function (response) {
-                $scope.student = $scope.students[$scope.studentIndex];
+                $scope.status = response.data;   //print status of request
             });
     }
 
